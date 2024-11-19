@@ -1,0 +1,11 @@
+.w-100.mb-3{
+    background-color: #083654;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+.w-100.mb-3:Hover{
+    background-color: white;
+    color:black;
+}
+
+
