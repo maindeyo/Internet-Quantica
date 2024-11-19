@@ -1,0 +1,161 @@
+
+openapi: '3.0.1'
+info:
+  title: Internet Quântica
+  description: >
+    O projeto “Internet Quântica” tem como propósito ser uma fonte de informação geral sobre a internet quântica, seus estudos e possíveis usos.
+  version: 1.0.0
+
+servers:
+  - url: http://{host}:{porta}/api
+    variables:
+      host: 
+        default: localhost
+      porta: 
+        default: '8000'
+
+paths:
+  /signup:
+    post:
+      summary: Cria um novo usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nome do usuário
+                email:
+                  type: string
+                  description: Email do usuário
+                password:
+                  type: string
+                  description: Senha do usuário
+      responses:
+        201:
+          description: Usuário criado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    description: URI do novo usuário
+        400:
+          description: Requisição inválida
+
+  /login:
+    post:
+      summary: Realiza o login de um usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email do usuário
+                password:
+                  type: string
+                  description: Senha do usuário
+      responses:
+        200:
+          description: Login bem-sucedido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensagem de sucesso
+                  usuario:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      nome:
+                        type: string
+                      email:
+                        type: string
+        401:
+          description: Credenciais inválidas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensagem de erro
+
+  /usuarios:
+    get:
+      summary: Lista todos os usuários
+      responses:
+        200:
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  
+  /usuarios/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Acessa um usuário específico
+      responses:
+        200:
+          description: Detalhes do usuário
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+        404:
+          description: Usuário não encontrado
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+
