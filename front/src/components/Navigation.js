@@ -14,7 +14,11 @@ export default function Navigation() {
 
   return (
     <>
-      <Navbar className='custom-navigation-color' expand="lg" data-bs-theme="dark">
+      <Navbar
+        className="custom-navigation-color"
+        expand="lg"
+        data-bs-theme="dark"
+      >
         <Container>
           <Navbar.Brand href="#home">
             <FontAwesomeIcon icon={faAtom} /> Internet Quântica
@@ -22,9 +26,13 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="#home">
+                Física Clássica vs Física Quântica
+              </Nav.Link>
+              <Nav.Link href="#features">Computadores Quânticos</Nav.Link>
+              <Nav.Link href="#pricing">
+                Internet Quântica e Criptografia Quântica
+              </Nav.Link>
             </Nav>
             <Nav className="ms-auto">
               <Nav.Link onClick={() => setModalShow(true)}>
