@@ -1,0 +1,12 @@
+.custom-carousel img {
+    height: 50vh; /* 50% da altura da janela */
+    width: 100%; /* 100% da largura do contêiner */
+    object-fit: cover; /* Mantém a proporção */
+  }
+  
+  
+  .custom-carousel img {
+    height: 650px; /* Altura das imagens */
+    object-fit: cover; /* Mantém a proporção e preenche o espaço */
+  }
+    

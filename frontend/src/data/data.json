@@ -1,0 +1,88 @@
+{
+  "physiclassic": [
+    {
+      "title": "Física Clássica",
+      "text": "A Física Clássica, desenvolvida até o século XIX, estuda fenômenos previsíveis e descreve o comportamento de objetos macroscópicos com leis empíricas. Suas principais teorias incluem a Lei da Gravitação Universal, que estabelece que corpos se atraem proporcionalmente às suas massas e inversamente ao quadrado da distância entre eles. As Leis de Newton, que explicam o movimento dos corpos sob a ação de forças, são fundamentais nesse contexto. Apesar de eficaz para escalas maiores, a Física Clássica enfrentou limitações em fenômenos atômicos, abrindo caminho para o desenvolvimento da Física Quântica."
+    }
+  ],
+  "physicquantum": [
+    {
+      "title": "Física Quântica",
+      "text": "A Física Quântica surgiu no início do século XX para superar as limitações da Física Clássica, especialmente em escalas atômicas. Um exemplo notável é o experimento mental do gato de Schrödinger, que ilustra a superposição quântica: o gato pode estar vivo e morto simultaneamente até ser observado. A mecânica quântica utiliza probabilidades em vez de posições fixas para descrever partículas. Embora controversa inicialmente, tornou-se a melhor teoria para explicar o mundo microscópico, desafiando o determinismo clássico e mostrando que a realidade depende das interações observadas."
+    }
+  ],
+     "computers": [
+    {
+      "title": "O que são Computadores Quânticos?",
+      "img": "https://hypescience.com/wp-content/uploads/2020/12/comoutador-quantico.jpg",
+      "text": "Os computadores quânticos utilizam princípios da mecânica quântica, como a superposição e o paralelismo quântico, permitindo resolver problemas complexos que levariam bilhões de anos para computadores tradicionais.",
+      "link": "/computador-quantico-1"
+    },
+    {
+      "title": "A Importância dos Qubits",
+      "img": "https://images.ecycle.com.br/wp-content/uploads/2021/08/11171043/Measuring_a_qubit_leaves_no_room_for_error-scaled.jpg",
+      "text": "Diferentemente dos bits clássicos, os qubits podem assumir múltiplos estados simultaneamente, processando grandes quantidades de informações ao mesmo tempo. Porém, sua fragilidade é um grande desafio.",
+      "link": "/computador-quantico-1"
+    },
+    {
+      "title": "Supercondutividade e Zero Absoluto",
+      "img": "https://th.bing.com/th/id/OIP.PrGsYXtI6ed3rNfnQgaHcQHaEz?w=254&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      "text": "Para operar de forma eficiente, computadores quânticos precisam de ambientes extremamente controlados, com temperaturas próximas ao zero absoluto. Isso reduz a resistência e estabiliza os qubits.",
+      "link": "/computador-quantico-1"
+    },
+    {
+      "title": "Desafios da Decoerência",
+      "img": "https://th.bing.com/th/id/OIP.Y9QThJbKz2FkRUq0U-nVzwHaE7?rs=1&pid=ImgDetMain",
+      "text": "A fragilidade dos qubits os torna altamente suscetíveis a interferências externas. A decoerência, perda de informações quânticas, é um dos maiores desafios na construção de computadores quânticos.",
+      "link": "/computador-quantico-1"
+    },
+    {
+      "title": "Vantagens Computacionais",
+      "img": "https://www.inovacaotecnologica.com.br/noticias/imagens/010150221222-computador-quantico-supercomputador-2.jpg",
+      "text": "A capacidade de realizar cálculos incrivelmente complexos em segundos, que levariam bilhões de anos para máquinas tradicionais, torna os computadores quânticos uma revolução potencial nas ciências computacionais.",
+      "link": "/computador-quantico-1"
+    },
+    {
+      "title": "Futuro e Limitações",
+      "img": "https://th.bing.com/th/id/OIP.Upbm-cVgoV19iJpnSOpT2wHaEo?rs=1&pid=ImgDetMain",
+      "text": "Apesar de promissores, os computadores quânticos ainda enfrentam limitações tecnológicas. A busca pela estabilidade dos qubits continua sendo essencial para avanços futuros.",
+      "link": "/computador-quantico-1"
+    }
+  ],
+  "carousel": [
+    {
+      "img": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2024/08/cientistas-apresentam-possibilidades-para-desenvolver-a-computacao-e-internet-quantica-no-brasil/rc.jpg/@@images/1c2e173f-2002-4144-ad83-ed8f9c41df29.jpeg",
+      "captionTitle": "Cientistas apresentam possibilidades para desenvolver a computação e internet quântica no Brasil",
+      "captionText": "O Painel “Ciências e tecnologias quânticas” trouxe à 5CNCTI o tema que mobiliza uma grande corrida tecnológica mundial, com 25 anos de pesquisa, especialistas brasileiros reivindicam infraestrutura compatível",
+      "link": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2024/08/cientistas-apresentam-possibilidades-para-desenvolver-a-computacao-e-internet-quantica-no-brasil"
+    },
+    {
+      "img": "https://revistapesquisa.fapesp.br/wp-content/uploads/2024/08/RPF-rede-quantica-laser-2024-08-800.jpg",
+      "captionTitle": "Primeira rede de criptografia quântica do país deve unir cinco instituições de pesquisa",
+      "captionText": "Qubits da Rede Rio Quântica serão transmitidos por fibra óptica e laser a céu aberto",
+      "link": "https://revistapesquisa.fapesp.br/primeira-rede-de-criptografia-quantica-do-pais-deve-unir-cinco-instituicoes-de-pesquisa/"
+    },
+    {
+      "img": "https://www.projetodraft.com/wp-content/uploads/2017/11/Screen-Shot-2017-11-29-at-10.46.30-AM.png",
+      "captionTitle": "Não apenas um: computador quântico mais eficiente prevê uso de múltiplos processadores",
+      "captionText": "Computadores quânticos atuais, usados experimentalmente e em serviços oferecidos na nuvem, apresentam limitações de capacidade, que podem ser superadas com arquitetura distribuída",
+      "link": "https://jornal.usp.br/ciencias/nao-apenas-um-computador-quantico-mais-eficiente-preve-uso-de-multiplos-processadores/"
+    }
+  ],
+  "internet": [
+    {
+      "img": "https://th.bing.com/th/id/R.d6ee8a35de7c883ba6600f899403666c?rik=zPckTol1xeSfeg&riu=http%3a%2f%2fjornaldoonibusmarilia.com.br%2fwp-content%2fuploads%2f2022%2f05%2fmtitecnologia-computacao-quantica.jpg&ehk=4l7T%2fjCaql5JjOudw0TwEbOUECw8fD2rcClFAze%2bCf8%3d&risl=&pid=ImgRaw&r=0",
+      "content": "A ideia de um computador que seja drasticamente mais rápido e, consequentemente, superior às máquinas atuais pode ser descrita como inovadora e excitante, representando um enorme passo para a tecnologia e para as demais áreas que usufruem de suas aplicações. No entanto, devido às condições específicas necessárias e aos estudos ainda mais aprofundados sobre os computadores quânticos e seu funcionamento, este avanço ainda enfrenta desafios. Muitas empresas, como a Microsoft, estão se debruçando no processo de pesquisa e projeto de um computador quântico usando o qubit topológico, que, segundo o site da Microsoft Azure, 'é mais estável do que qualquer outro qubit projetado até hoje, o que significa que esse computador quântico será pequeno o suficiente para caber em um armário e rápido o suficiente para resolver problemas em dias ou semanas'."
+    },
+    {
+      "img": "https://th.bing.com/th/id/OIP.1_RzG-9c5yGyw1MbOPUYKgHaD4?rs=1&pid=ImgDetMain",
+      "content": "Vale ressaltar que, apesar de ainda nos encontrarmos no início da construção dos computadores quânticos, já há um certo desenvolvimento quando falamos de mecânica quântica, podendo ser realizada por meio de simulações em máquinas clássicas, hospedagem em nuvem ou por kits de desenvolvimento para computadores quânticos. Estes são compostos por plataforma de desenvolvimento, simuladores, linguagens e bibliotecas, e são colocados à disposição da comunidade de desenvolvedores de software, com licença Apache 2.0 (software livre). Com estes kits, QisKit5 (IBM), Cirq6 (Google), Azure Quantum7 (Microsoft) e Forest8 (Rigetti), é possível desenvolver algoritmos, testá-los em um simulador e então submetê-los a um computador quântico real, para obter o resultado do processamento (HIDARY, 2021, apud SILVEIRA, 2022). Apesar de alguns progressos e da construção de tais máquinas, estamos ainda no início do caminho que leva a humanidade à era da supremacia quântica, todavia, já se pesquisa sobre uma rede que possa interligar todos esses computadores quânticos e quais requisitos seriam necessários para que ela funcionasse. Essa nova rede de conexão pode ser nomeada de Internet Quântica. É aguardado que seja uma das maiores inovações no ramo da comunicação, oferecendo uma troca de informações e dados feita de forma instantânea ultrapassando a velocidade de comunicação atual, que se baseia na luz. Uma das bases da Internet Quântica surge no conceito de entrelaçamento, onde qubits estão interligados ao ponto de que, mesmo distantes, qualquer mudança de estado em um qubit irá ser reproduzida no outro, tornando assim a comunicação imediata e segura."
+    }
+  ],
+  "cripto": [
+    {
+      "img": "https://th.bing.com/th/id/R.27e81bd0b8678f5626f21e38a964d996?rik=AQBzLXs48ZEkuA&pid=ImgRaw&r=0&sres=1&sresct=1",
+      "content": "Esse conceito surge no ramo da criptografia quântica que possui como objetivo uma transmissão de informações segura que esteja restrita a somente seu destinatário, tentando aperfeiçoar o sistema de criptografia clássica que, ao contrário do que é amplamente acreditado, não é totalmente seguro. Esse novo sistema criptográfico quântico, também conhecido como Distribuição de Chaves Quânticas (QKD), baseia-se na mistura de  princípios da mecânica quântica com a distribuição clássica para formar uma segurança maior de transmissão de chaves. Dito isso, seus dois principais fundamentos são o princípio da incerteza de Heisenberg e o teorema da Não-Clonagem. Na física tradicional, podemos determinar como um sistema funcionará e suas interações se soubermos a posição inicial e o momento de suas partículas. Mas, segundo o princípio da incerteza de Heisenberg, não se pode determinar com precisão o momento ou posicionamento de uma partícula, uma vez que esses valores irão se alterar no momento que forem medidos. A partir desse ponto nasce o teorema da Não-Clonagem, visto que não se pode medir o sistema com precisão torna-se impossível clonar o desconhecido, ou seja, não é possível criar cópias de fótons ou medi-los, impossibilitando tentativas de invasão. Em suma, a principal aplicabilidade do sistema QKG está direcionada para a área de comunicações, sistemas de autenticação, criptografias de dados e outras."
+    }
+  ]
+}

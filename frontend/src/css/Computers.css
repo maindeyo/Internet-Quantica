@@ -1,0 +1,65 @@
+/* Estilo do Card Customizado */
+.custom-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-color: #083654;
+    padding: 15px;
+    /* Fazendo o card parecer mais 'flutuante' */
+    border-radius: 8px; /* Bordas arredondadas */
+  }
+  
+  .custom-card:hover {
+    transform: translateY(-10px); /* O card vai se mover ligeiramente para cima */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adicionando uma sombra para destacar o card */
+  }
+  
+  /* Imagem dentro do card */
+  .custom-card-img {
+    transition: transform 0.3s ease;
+    height: 200px; /* Altura fixa para a imagem */
+    object-fit: cover; /* Ajusta a imagem para cobrir o card sem distorção */
+    border-radius: 4px; /* Bordas arredondadas para a imagem */
+  }
+  
+  .custom-card:hover .custom-card-img {
+    transform: scale(1.05); 
+  }
+  
+  /* Estilo do título */
+  .custom-card-title {
+    color: #083654;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .custom-card:hover .custom-card-title {
+    color: #083654; /* A cor do título permanece, mas pode ser ajustada */
+  }
+  
+  /* Estilo do texto */
+  .custom-card-text {
+    color: #555;
+    transition: color 0.3s ease;
+  }
+  
+  .custom-card:hover .custom-card-text {
+    color: #083654; /* Mudando a cor do texto ao passar o mouse */
+  }
+  
+  /* Estilo para o botão */
+  .custom-btn {
+    background-color: #083654; /* Cor escura personalizada */
+    border-color: #083654; /* Mesma cor no contorno */
+    color: white; /* Cor do texto */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Transições suaves */
+  }
+  
+  /* Efeito hover */
+  .custom-btn:hover {
+    background-color: rgba(8, 54, 84, 0); /* Torna o fundo transparente */
+    border-color: #083654; /* Mantém a borda visível */
+    color: #083654; /* Muda a cor do texto para a cor escura */
+    transform: scale(1.05); /* Efeito de leve aumento de tamanho */
+  }
+  
+  
