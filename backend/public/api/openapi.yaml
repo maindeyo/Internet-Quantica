@@ -1,4 +1,3 @@
-
 openapi: '3.0.1'
 info:
   title: Internet Quântica
@@ -25,15 +24,19 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                nome:
                   type: string
                   description: Nome do usuário
                 email:
                   type: string
                   description: Email do usuário
-                password:
+                senha:
                   type: string
                   description: Senha do usuário
+              required:
+                - nome
+                - email
+                - senha
       responses:
         201:
           description: Usuário criado
@@ -47,6 +50,14 @@ paths:
                     description: URI do novo usuário
         400:
           description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensagem de erro
 
   /login:
     post:
@@ -61,9 +72,12 @@ paths:
                 email:
                   type: string
                   description: Email do usuário
-                password:
+                senha:
                   type: string
                   description: Senha do usuário
+              required:
+                - email
+                - senha
       responses:
         200:
           description: Login bem-sucedido
@@ -107,7 +121,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
-  
+
   /usuarios/{id}:
     parameters:
       - name: id
@@ -127,7 +141,7 @@ paths:
                 properties:
                   id:
                     type: integer
-                  name:
+                  nome:
                     type: string
                   email:
                     type: string
@@ -140,6 +154,118 @@ paths:
         404:
           description: Usuário não encontrado
 
+  /comments:
+    get:
+      summary: Lista todos os comentários
+      responses:
+        200:
+          description: Lista de comentários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+    post:
+      summary: Cria um novo comentário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: Conteúdo do comentário
+                usu_id:
+                  type: integer
+                  description: ID do usuário que está criando o comentário
+              required:
+                - content
+                - usu_id
+      responses:
+        201:
+          description: Comentário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    description: URI do novo comentário
+        400:
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensagem de erro detalhada
+
+  /comments/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Acessa um comentário específico
+      responses:
+        200:
+          description: Detalhes do comentário
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  content:
+                    type: string
+                  usu_id:
+                    type: integer
+        404:
+          description: Comentário não encontrado
+    put:
+      summary: Atualiza um comentário específico
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: Conteúdo do comentário
+      responses:
+        200:
+          description: Comentário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensagem de sucesso
+        404:
+          description: Comentário não encontrado
+        400:
+          description: Requisição inválida
+    delete:
+      summary: Exclui um comentário específico
+      responses:
+        204:
+          description: Comentário excluído com sucesso
+        404:
+          description: Comentário não encontrado
+
 components:
   schemas:
     User:
@@ -147,7 +273,7 @@ components:
       properties:
         id:
           type: integer
-        name:
+        nome:
           type: string
         email:
           type: string
@@ -158,4 +284,18 @@ components:
           type: string
           format: date-time
 
-
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+        content:
+          type: string
+        usu_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time

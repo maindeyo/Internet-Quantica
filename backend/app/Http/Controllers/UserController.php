@@ -19,12 +19,12 @@ class UserController extends Controller
     public function store(Request $request) 
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'nome' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8',
+            'senha' => 'required|string|min:8',
         ]);
 
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['senha'] = Hash::make($validatedData['senha']);
 
         $user = User::create($validatedData);
 
@@ -37,7 +37,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
+            return response()->json(['message' => 'Usuário não encontrad'], 404);
         }
 
         return response()->json($user);
@@ -49,17 +49,17 @@ class UserController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
         }
 
         $validatedData = $request->validate([
-            'name' => 'sometimes|string|max:255',
+            'nome' => 'sometimes|string|max:255',
             'email' => 'sometimes|email|unique:users,email,' . $user->id,
-            'password' => 'sometimes|string|min:8',
+            'senha' => 'sometimes|string|min:8',
         ]);
 
-        if (isset($validatedData['password'])) {
-            $validatedData['password'] = Hash::make($validatedData['password']);
+        if (isset($validatedData['senha'])) {
+            $validatedData['senha'] = Hash::make($validatedData['password']);
         }
 
         $user->update($validatedData);
@@ -72,30 +72,45 @@ class UserController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
         }
 
         $user->delete();
 
-        return response()->json(['message' => 'User deleted successfully']);
+        return response()->json(['message' => 'Usuário deletado com sucesso']);
     }
 
-    public function login(Request $request) 
-    {
-    $credentials = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
+    public function login(Request $request) {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'senha' => 'required'
+        ]);
 
-    $user = User::where('email', $credentials['email'])->first();
+        $user = User::where('email', $credentials['email'])->first();
 
-    if ($user && Hash::check($credentials['password'], $user->password)) {
-   
-        return response()->json(['message' => 'Login realizado com sucesso'], 200);
-    } else {
-        return response()->json(['message' => 'Credenciais inválidas'], 401);
+        if ($user && Hash::check($credentials['senha'], $user->senha)) {
+    
+            return response()->json(['message' => 'Login realizado com sucesso'], 200);
+        } else {
+            return response()->json(['message' => 'Credenciais inválidas'], 401);
+        }
     }
-}
+
+    // public function login(Request $request) {
+    //     $credentials = $request->only('email', 'senha');
+    //     try {
+    //         $user = User::where('email', $credentials['email'])->first();
+    //         if (!$user || !Hash::check($credentials['senha'], $user->senha)) 
+    //             return response()->json(['message' => 'Credenciais incorretas, verifique-as e tente novamente.'], 401);
+                
+    //         $token = JWTAuth::fromUser($user);
+    //     } catch (\Throwable|\Exception $e) {
+    //         return ResponseService::exception('users.login', null, $e);
+    //     }
+        
+    //     return response()->json(compact('token'));
+    // }
+
 
 
     

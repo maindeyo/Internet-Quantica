@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,17 @@ Route::post('/signup', [UserController::class, 'store'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::prefix('/usuarios')->name('usuarios.')->group(function () {
-    Route::get('', [UserController::class, 'index'])->name('lista'); 
-    Route::get('/{id}', [UserController::class, 'show'])->name('perfil'); 
+    Route::get('', [UserController::class, 'index'])->name('lista');
+    Route::get('/{id}', [UserController::class, 'show'])->name('perfil');
     Route::put('/{id}', [UserController::class, 'update'])->name('atualizar');
-    Route::delete('/{id}', [UserController::class, 'destroy'])->name('deletar'); 
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('deletar');
 });
+
+Route::prefix('comments')->name('comments.')->group(function () {
+    Route::get('', [CommentController::class, 'index'])->name('lista');
+    Route::post('', [CommentController::class, 'store'])->name('criar');
+    Route::get('/{id}', [CommentController::class, 'show'])->name('mostrar');
+    Route::put('/{id}', [CommentController::class, 'update'])->name('atualizar');
+    Route::delete('/{id}', [CommentController::class, 'destroy'])->name('deletar');
+});
+
