@@ -2,13 +2,37 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import '../css/Navigation.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAtom, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faAtom, faRightToBracket, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { Dropdown } from 'react-bootstrap';
 import LoginModal from './Login'; 
+import '../css/Navigation.css';
+import api from "../services/api";
 
 export default function Navigation() {
   const [modalShow, setModalShow] = useState(false);
+  const token = localStorage.getItem('token'); 
+
+  function handleLogout() {
+    localStorage.removeItem("token")
+    // api
+    //   .post(
+    //     "/logout", 
+    //     {}, 
+    //     {
+    //       headers: { Authorization: `Bearer ${token}` }, 
+    //     }
+    //   )
+    //   .then(() => {
+    //     alert("Você saiu com sucesso!");
+    //     localStorage.removeItem("token");
+    //     // navigate("/"); 
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     alert("Erro ao tentar deslogar.");
+    //   });
+  }
 
   return (
     <>
@@ -29,9 +53,20 @@ export default function Navigation() {
               <Nav.Link href="#pricing" className="px-3">Internet Quântica e Criptografia Quântica</Nav.Link>
             </Nav>
             <Nav className="ms-auto">
-              <Nav.Link onClick={() => setModalShow(true)} className="px-3">
-                <FontAwesomeIcon icon={faRightToBracket} className="me-2" /> Login
-              </Nav.Link>
+              {token ? (
+                <Dropdown align="end">
+                  <Dropdown.Toggle variant="link" id="user-dropdown">
+                    <FontAwesomeIcon icon={faUserCircle} className="me-2" />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              ) : (
+                <Nav.Link onClick={() => setModalShow(true)} className="px-3">
+                  <FontAwesomeIcon icon={faRightToBracket} className="me-2" /> Login
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

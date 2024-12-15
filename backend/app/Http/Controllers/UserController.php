@@ -98,6 +98,17 @@ class UserController extends Controller
         return response()->json(compact('token'));
     }
 
+    public function logout(Request $request) {
+        try {
+            $token = $request->bearerToken(); //recebe o token do cabeçalho
+            if (!JWTAuth::invalidate($token))  //tenta invalidar o token
+                throw new \Exception('Erro. Tente novamente.', -404);
+            return response(['status' => true, 'msg' => 'Deslogado com sucesso'], 200);
+        } catch (\Throwable|\Exception $e) {
+            return ResponseService::exception('users.logout', null, $e);
+        }
+    }
+
 
 
     

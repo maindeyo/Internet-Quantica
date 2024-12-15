@@ -22,6 +22,7 @@ const LoginModal = ({ show, onHide }) => {
     try {
       const response = await api.post('/login', { email, senha });
       console.log('Login bem-sucedido:', response.data);
+      localStorage.setItem('token', response.data.token);
     } catch (error) {
       console.error('Erro no login:', error);
       alert('Erro ao realizar o login. Verifique suas credenciais e tente novamente.');

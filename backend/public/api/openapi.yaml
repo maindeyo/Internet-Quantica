@@ -109,6 +109,33 @@ paths:
                     type: string
                     description: Mensagem de erro
 
+  /logout:
+    post:
+      summary: Realiza o logout de um usuário
+      security:
+        - bearer: []
+      responses:
+        200:
+          description: Logout bem-sucedido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensagem de sucesso, indicando que o logout foi realizado
+        401:
+          description: Usuário não autenticado ou token inválido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensagem de erro indicando que o usuário não está autenticado ou o token expirou
+
   /usuarios:
     get:
       summary: Lista todos os usuários
@@ -299,3 +326,9 @@ components:
         updated_at:
           type: string
           format: date-time
+
+  securitySchemes:
+    bearer: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
