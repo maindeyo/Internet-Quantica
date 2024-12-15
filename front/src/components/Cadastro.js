@@ -4,16 +4,15 @@ import api from "../services/api";
 import '../css/CustomModal.css';
 
 const CustomCadastro = ({ show, onHide }) => {
-  // Inicialização com string vazia para evitar undefined
-  const [name, setName] = useState('');
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [senha, setSenha] = useState('');
 
   const handleCadastro = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/signup', { name, email, password });
-      console.log('Cadastro bem-sucedido:', response.data); //temporario
+      const response = await api.post('/signup', { nome, email, senha });
+      console.log('Cadastro bem-sucedido:', response.data);
     } catch (error) {
       console.error('Erro no cadastro:', error);
       if (error.response) {
@@ -42,11 +41,11 @@ const CustomCadastro = ({ show, onHide }) => {
               <Form.Group controlId="signinName" className="mb-3">
                 <Form.Label>Nome</Form.Label>
                 <Form.Control 
-                  name='name' 
+                  name='nome' 
                   type="text" 
                   placeholder="Digite seu nome" 
-                  value={name} 
-                  onChange={(e) => setName(e.target.value)} 
+                  value={nome} 
+                  onChange={(e) => setNome(e.target.value)} 
                 />
               </Form.Group>
               <Form.Group controlId="signinEmail" className="mb-3">
@@ -62,11 +61,11 @@ const CustomCadastro = ({ show, onHide }) => {
               <Form.Group controlId="signinPassword" className="mb-3">
                 <Form.Label>Senha</Form.Label>
                 <Form.Control 
-                  name='password' 
+                  name='senha' 
                   type="password" 
                   placeholder="Digite sua senha" 
-                  value={password} 
-                  onChange={(e) => setPassword(e.target.value)} 
+                  value={senha} 
+                  onChange={(e) => setSenha(e.target.value)} 
                 />
               </Form.Group>
               <Button type="submit" className="w-100 mb-3">

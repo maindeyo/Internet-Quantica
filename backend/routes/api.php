@@ -22,6 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/signup', [UserController::class, 'store'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
+Route::group(['middleware'=> 'jwt.verify'],function () {
+    Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
+  });
+
 Route::prefix('/usuarios')->name('usuarios.')->group(function () {
     Route::get('', [UserController::class, 'index'])->name('lista');
     Route::get('/{id}', [UserController::class, 'show'])->name('perfil');

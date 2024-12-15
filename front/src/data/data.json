@@ -1,46 +1,52 @@
 {
-  "physiclassic":[
-   {
-    "title":"Física Clássica",
-    "text":"A Física Clássica predominou até o século XIX e era focada no estudo de fenômenos naturais previsíveis e visíveis a olho nu, descrevendo o comportamento de objetos macroscópicos com base em leis fundamentadas na observação empírica. Entre suas principais teorias, destaca-se a Lei da Gravitação Universal, que estabelece que todos os corpos no universo se atraem com uma força proporcional ao produto de suas massas e inversamente proporcional ao quadrado da distância entre seus centros. Além disso, as Leis do Movimento de Newton foram fundamentais para descrever como os corpos em movimento respondem a forças e interagem entre si. A Física Clássica também se caracteriza por sua abordagem experimental, permitindo a recriação de fenômenos em diversas condições para observações mais precisas e controladas. Apesar de seu sucesso em descrever fenômenos macroscópicos, essa abordagem encontrou limitações ao tentar explicar os comportamentos observados em sistemas atômicos, o que exigiu uma nova abordagem e resultou no surgimento da Física Moderna."
-   }
-  ],
-  "physicquantum":[
+  "physiclassic": [
     {
-      "title": "Física Quântica",
-      "text": "A Física Quântica, também conhecida como Física Moderna, surgiu para superar as limitações da Física Clássica, especialmente no entendimento de sistemas atômicos e microscópicos. Um exemplo marcante de sua abordagem é o paradoxo do gato de Schrödinger, proposto por Erwin Schrödinger em 1935, que ilustra o conceito de superposição quântica. Nesse experimento hipotético, um gato em uma caixa pode estar simultaneamente vivo e morto até que a caixa seja aberta, destacando a diferença entre a Física Clássica, que trata o estado como definitivo antes da observação, e a Física Quântica, que requer a interação do observador para determinar o estado final. A mecânica quântica introduziu uma nova forma de descrever os sistemas, abandonando as descrições clássicas baseadas em posições e velocidades fixas, e adotando uma abordagem abstrata para representar os estados quânticos. Esses estados requerem interpretações específicas para conectar as teorias aos resultados experimentais. Os experimentos quânticos enfrentam desafios únicos, como a extrema sensibilidade das partículas quânticas, que podem alterar completamente sua composição ou até desaparecer diante de pequenas perturbações. Isso contrasta com a Física Clássica, onde os fenômenos podem ser recriados repetidamente com relativa precisão. Além disso, a mecânica quântica emergiu em um período de intenso debate sobre sua legitimidade para descrever o mundo microscópico. Apesar disso, tornou-se uma das teorias mais bem-sucedidas para explicar fenômenos naturais em escalas atômicas e subatômicas, marcando uma ruptura fundamental com os paradigmas da Física Clássica."
+      "title": "Física Clássica",
+      "text": "A Física Clássica, desenvolvida até o século XIX, estuda fenômenos previsíveis e descreve o comportamento de objetos macroscópicos com leis empíricas. Suas principais teorias incluem a Lei da Gravitação Universal, que estabelece que corpos se atraem proporcionalmente às suas massas e inversamente ao quadrado da distância entre eles. As Leis de Newton, que explicam o movimento dos corpos sob a ação de forças, são fundamentais nesse contexto. Apesar de eficaz para escalas maiores, a Física Clássica enfrentou limitações em fenômenos atômicos, abrindo caminho para o desenvolvimento da Física Quântica."
     }
   ],
-  "computers": [
+  "physicquantum": [
+    {
+      "title": "Física Quântica",
+      "text": "A Física Quântica surgiu no início do século XX para superar as limitações da Física Clássica, especialmente em escalas atômicas. Um exemplo notável é o experimento mental do gato de Schrödinger, que ilustra a superposição quântica: o gato pode estar vivo e morto simultaneamente até ser observado. A mecânica quântica utiliza probabilidades em vez de posições fixas para descrever partículas. Embora controversa inicialmente, tornou-se a melhor teoria para explicar o mundo microscópico, desafiando o determinismo clássico e mostrando que a realidade depende das interações observadas."
+    }
+  ],
+     "computers": [
     {
       "title": "O que são Computadores Quânticos?",
       "img": "https://hypescience.com/wp-content/uploads/2020/12/comoutador-quantico.jpg",
-      "text": "Os computadores quânticos utilizam princípios da mecânica quântica, como a superposição e o paralelismo quântico, permitindo resolver problemas complexos que levariam bilhões de anos para computadores tradicionais."
+      "text": "Os computadores quânticos utilizam princípios da mecânica quântica, como a superposição e o paralelismo quântico, permitindo resolver problemas complexos que levariam bilhões de anos para computadores tradicionais.",
+      "link": "/computador-quantico-1"
     },
     {
       "title": "A Importância dos Qubits",
       "img": "https://images.ecycle.com.br/wp-content/uploads/2021/08/11171043/Measuring_a_qubit_leaves_no_room_for_error-scaled.jpg",
-      "text": "Diferentemente dos bits clássicos, os qubits podem assumir múltiplos estados simultaneamente, processando grandes quantidades de informações ao mesmo tempo. Porém, sua fragilidade é um grande desafio."
+      "text": "Diferentemente dos bits clássicos, os qubits podem assumir múltiplos estados simultaneamente, processando grandes quantidades de informações ao mesmo tempo. Porém, sua fragilidade é um grande desafio.",
+      "link": "/computador-quantico-1"
     },
     {
       "title": "Supercondutividade e Zero Absoluto",
       "img": "https://th.bing.com/th/id/OIP.PrGsYXtI6ed3rNfnQgaHcQHaEz?w=254&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-      "text": "Para operar de forma eficiente, computadores quânticos precisam de ambientes extremamente controlados, com temperaturas próximas ao zero absoluto. Isso reduz a resistência e estabiliza os qubits."
+      "text": "Para operar de forma eficiente, computadores quânticos precisam de ambientes extremamente controlados, com temperaturas próximas ao zero absoluto. Isso reduz a resistência e estabiliza os qubits.",
+      "link": "/computador-quantico-1"
     },
     {
       "title": "Desafios da Decoerência",
       "img": "https://th.bing.com/th/id/OIP.Y9QThJbKz2FkRUq0U-nVzwHaE7?rs=1&pid=ImgDetMain",
-      "text": "A fragilidade dos qubits os torna altamente suscetíveis a interferências externas. A decoerência, perda de informações quânticas, é um dos maiores desafios na construção de computadores quânticos."
+      "text": "A fragilidade dos qubits os torna altamente suscetíveis a interferências externas. A decoerência, perda de informações quânticas, é um dos maiores desafios na construção de computadores quânticos.",
+      "link": "/computador-quantico-1"
     },
     {
       "title": "Vantagens Computacionais",
       "img": "https://www.inovacaotecnologica.com.br/noticias/imagens/010150221222-computador-quantico-supercomputador-2.jpg",
-      "text": "A capacidade de realizar cálculos complexos em segundos, que levariam bilhões de anos para computadores tradicionais, destaca o potencial revolucionário dos computadores quânticos."
+      "text": "A capacidade de realizar cálculos incrivelmente complexos em segundos, que levariam bilhões de anos para máquinas tradicionais, torna os computadores quânticos uma revolução potencial nas ciências computacionais.",
+      "link": "/computador-quantico-1"
     },
     {
       "title": "Futuro e Limitações",
       "img": "https://th.bing.com/th/id/OIP.Upbm-cVgoV19iJpnSOpT2wHaEo?rs=1&pid=ImgDetMain",
-      "text": "Apesar de promissores, os computadores quânticos ainda enfrentam limitações tecnológicas. A busca pela estabilidade dos qubits continua sendo essencial para avanços futuros."
+      "text": "Apesar de promissores, os computadores quânticos ainda enfrentam limitações tecnológicas. A busca pela estabilidade dos qubits continua sendo essencial para avanços futuros.",
+      "link": "/computador-quantico-1"
     }
   ],
   "carousel": [

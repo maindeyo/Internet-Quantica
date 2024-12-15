@@ -8,7 +8,6 @@ import PhysicSection from './components/PhysicSection';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Computers from './components/Computers';
 import InternetSection from './components/InternetSection';
-import CriptoSection from './components/CriptoSection';
 import InfoSession from './components/InfoSession';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,8 +17,6 @@ root.render(
     <CustomCarousel />
     <PhysicSection />
     <Computers />
-    {/* <InternetSection />
-    <CriptoSection /> */}
     <InfoSession />
   </React.StrictMode>
 );
