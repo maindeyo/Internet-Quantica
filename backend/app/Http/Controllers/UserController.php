@@ -29,8 +29,11 @@ class UserController extends Controller
             ],
             'senha' => 'required|string|min:6',
         ], [
+            'nome.required' => 'É necessário informar um nome',
             'email.regex' => 'O campo email deve ter um formato válido, incluindo um domínio com TLD (exemplo: .com, .org).',
             'email.unique' => 'Este email já está em uso.',
+            'senha.min' => 'Sua senha é muito curto, ela deve conter no mínimo 6 caracteres.',
+            'senha.required' => 'O campo senha é obrigatório.', 
         ]);
         
 
@@ -96,21 +99,25 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Usuário deletado com sucesso']);
     }
+        public function login(Request $request) {
+            $credentials = $request->only('email', 'senha');
 
-    public function login(Request $request) {
-        $credentials = $request->only('email', 'senha');
-        try {
-            $user = User::where('email', $credentials['email'])->first();
-            if (!$user || !Hash::check($credentials['senha'], $user->senha)) 
-                return response()->json(['message' => 'Credenciais incorretas, verifique-as e tente novamente.'], 401);
-                
-            $token = JWTAuth::fromUser($user);
-        } catch (\Throwable|\Exception $e) {
-            return ResponseService::exception('users.login', null, $e);
-        }
-        
-        return response()->json(compact('token'));
+            try {
+                $user = User::where('email', $credentials['email'])->first();
+                if (!$user) {
+                    return response()->json(['message' => 'O email fornecido não foi encontrado.'], 401);
+                }
+                if (!Hash::check($credentials['senha'], $user->senha)) {
+                    return response()->json(['message' => 'A senha fornecida está incorreta.'], 401);
+                }
+                $token = JWTAuth::fromUser($user);
+            } catch (\Throwable|\Exception $e) {
+                return ResponseService::exception('users.login', null, $e);
+            }
+            
+            return response()->json(compact('token'));
     }
+    
 
     public function logout(Request $request) {
         try {
