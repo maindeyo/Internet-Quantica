@@ -2,50 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Services\ResponseService;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
-
     public function index()
     {
         $users = User::all();
         return response()->json($users);
     }
 
-
     public function store(Request $request) 
     {
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'senha' => 'required|string|min:8',
+            'email' => [
+                'required',
+                'email',
+                'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+                'unique:users,email',
+            ],
+            'senha' => 'required|string|min:6',
+        ], [
+            'email.regex' => 'O campo email deve ter um formato válido, incluindo um domínio com TLD (exemplo: .com, .org).',
+            'email.unique' => 'Este email já está em uso.',
         ]);
+        
 
         $validatedData['senha'] = Hash::make($validatedData['senha']);
 
         $user = User::create($validatedData);
 
-        return response()->json(['location' => route('usuarios.perfil', ['id' => $user->id])], 201);
-    }
+        $token = JWTAuth::fromUser($user);
 
+        return response()->json(
+            ['location' => route('usuarios.perfil', ['id' => $user->id]), 'token' => $token], 201
+        );
+    }
 
     public function show($id)
     {
         $user = User::find($id);
 
         if (!$user) {
-            return response()->json(['message' => 'Usuário não encontrad'], 404);
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
         }
 
         return response()->json($user);
     }
-
  
     public function update(Request $request, $id)
     {
@@ -73,9 +82,14 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-
+        
         if (!$user) {
             return response()->json(['message' => 'Usuário não encontrado'], 404);
+        }
+        
+        $comments = Comment::where('usu_id', $id)->get();
+        foreach ($comments as $comment) {
+            $comment->delete();
         }
 
         $user->delete();
@@ -100,16 +114,12 @@ class UserController extends Controller
 
     public function logout(Request $request) {
         try {
-            $token = $request->bearerToken(); //recebe o token do cabeçalho
-            if (!JWTAuth::invalidate($token))  //tenta invalidar o token
+            JWTAuth::getToken(); 
+            if (!JWTAuth::invalidate())  
                 throw new \Exception('Erro. Tente novamente.', -404);
             return response(['status' => true, 'msg' => 'Deslogado com sucesso'], 200);
         } catch (\Throwable|\Exception $e) {
-            return ResponseService::exception('users.logout', null, $e);
+            return ResponseService::exception('users.logout', null, $e); 
         }
     }
-
-
-
-    
 }
