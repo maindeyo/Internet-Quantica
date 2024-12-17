@@ -2,13 +2,23 @@
   "physiclassic": [
     {
       "title": "Física Clássica",
-      "text": "A Física Clássica, desenvolvida até o século XIX, estuda fenômenos previsíveis e descreve o comportamento de objetos macroscópicos com leis empíricas. Suas principais teorias incluem a Lei da Gravitação Universal, que estabelece que corpos se atraem proporcionalmente às suas massas e inversamente ao quadrado da distância entre eles. As Leis de Newton, que explicam o movimento dos corpos sob a ação de forças, são fundamentais nesse contexto. Apesar de eficaz para escalas maiores, a Física Clássica enfrentou limitações em fenômenos atômicos, abrindo caminho para o desenvolvimento da Física Quântica."
+      "text": "A Física Clássica, desenvolvida até o século XIX, estuda fenômenos previsíveis e descreve o comportamento de objetos macroscópicos com leis empíricas. Suas principais teorias incluem a Lei da Gravitação Universal, que estabelece que corpos se atraem proporcionalmente às suas massas e inversamente ao quadrado da distância entre eles. As Leis de Newton, que explicam o movimento dos corpos sob a ação de forças, são fundamentais nesse contexto. Apesar de eficaz para escalas maiores, a Física Clássica enfrentou limitações em fenômenos atômicos, abrindo caminho para o desenvolvimento da Física Quântica.",
+      "scientists": [
+      { "nome": "Isaac Newton", "foto": "https://th.bing.com/th/id/OIP.AQD6fl5VWfNuQPvTwAx2LQHaFC?rs=1&pid=ImgDetMain" },
+      { "nome": "Galileo Galilei", "foto": "https://th.bing.com/th/id/OIP.AQD6fl5VWfNuQPvTwAx2LQHaFC?rs=1&pid=ImgDetMaing" },
+      { "nome": "James C. Maxwell", "foto": "https://th.bing.com/th/id/OIP.AQD6fl5VWfNuQPvTwAx2LQHaFC?rs=1&pid=ImgDetMain" }
+    ]
     }
   ],
   "physicquantum": [
     {
       "title": "Física Quântica",
-      "text": "A Física Quântica surgiu no início do século XX para superar as limitações da Física Clássica, especialmente em escalas atômicas. Um exemplo notável é o experimento mental do gato de Schrödinger, que ilustra a superposição quântica: o gato pode estar vivo e morto simultaneamente até ser observado. A mecânica quântica utiliza probabilidades em vez de posições fixas para descrever partículas. Embora controversa inicialmente, tornou-se a melhor teoria para explicar o mundo microscópico, desafiando o determinismo clássico e mostrando que a realidade depende das interações observadas."
+      "text": "A Física Quântica surgiu no início do século XX para superar as limitações da Física Clássica, especialmente em escalas atômicas. Um exemplo notável é o experimento mental do gato de Schrödinger, que ilustra a superposição quântica: o gato pode estar vivo e morto simultaneamente até ser observado. A mecânica quântica utiliza probabilidades em vez de posições fixas para descrever partículas. Embora controversa inicialmente, tornou-se a melhor teoria para explicar o mundo microscópico, desafiando o determinismo clássico e mostrando que a realidade depende das interações observadas.",
+      "scientists": [
+      { "nome": "Albert Einstein", "foto": "https://th.bing.com/th/id/OIP.AQD6fl5VWfNuQPvTwAx2LQHaFC?rs=1&pid=ImgDetMain" },
+      { "nome": "Niels Bohr", "foto": "https://th.bing.com/th/id/OIP.AQD6fl5VWfNuQPvTwAx2LQHaFC?rs=1&pid=ImgDetMain" },
+      { "nome": "Werner Heisenberg", "foto": "https://th.bing.com/th/id/OIP.AQD6fl5VWfNuQPvTwAx2LQHaFC?rs=1&pid=ImgDetMain" }
+    ]
     }
   ],
      "computers": [
