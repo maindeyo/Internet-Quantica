@@ -1,4 +1,4 @@
-<?php
+<?php //controller de usuario
 
 namespace App\Http\Controllers;
 

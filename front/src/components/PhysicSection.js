@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import data from '../data/data.json';
-import '../css/PhysicSection.css';
+import '../css/PhysicSection.css'; //fisica
 
 const PhysicSection = () => {
   const PhysiClassicData = data.physiclassic;

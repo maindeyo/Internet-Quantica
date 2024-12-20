@@ -13,7 +13,7 @@ import api from "../services/api";
 export default function Navigation() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showCadastroModal, setShowCadastroModal] = useState(false);
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token"); //navigation
        
   // localStorage.removeItem("token");
 
@@ -92,7 +92,6 @@ export default function Navigation() {
         </Container>
       </Navbar>
 
-      {/* Modais */}
       <LoginModal show={showLoginModal} onHide={() => setShowLoginModal(false)} />
       <CadastroModal
         show={showCadastroModal}

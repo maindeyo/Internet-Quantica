@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import api from '../services/api'; // Supondo que você tenha uma instância do axios configurada
-import {jwtDecode} from 'jwt-decode'; // Correção no nome da função importada
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importando o Bootstrap
-
+import api from '../services/api'; 
+import {jwtDecode} from 'jwt-decode'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 const Comentarios = () => {
   const [comentarios, setComentarios] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -18,12 +17,12 @@ const Comentarios = () => {
         console.log("User ID:", userId);
         setUserId(userId); 
 
-        // Requisição para carregar o nome do usuário
+
         api.get(`/usuarios/${userId}/nome`, {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((response) => {
-            setUserName(response.data.name); // Supondo que o nome esteja no campo "name"
+            setUserName(response.data.name); 
           })
           .catch((error) => {
             console.error('Erro ao carregar o nome do usuário:', error);
@@ -34,13 +33,13 @@ const Comentarios = () => {
       }
     }
 
-    // Requisição para carregar os comentários
+
     api.get('/comments', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
         console.log("Comentários carregados:", response.data);
-        setComentarios(response.data); // Atualiza o estado com os comentários
+        setComentarios(response.data);
       })
       .catch((error) => {
         console.error('Erro ao carregar os comentários:', error);
