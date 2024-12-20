@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Services\ResponseService;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,10 +16,20 @@ class UserController extends Controller
     {
         $users = User::all();
         return response()->json($users);
+    
     }
 
-    public function store(Request $request) 
-    {
+    public function getUserName($id) {
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json(['message' => 'Usuário não encontrado'], 404);
+    }
+
+    return response()->json(['name' => $user->nome], 200);
+    }
+
+    public function store(Request $request) {
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
             'email' => [
@@ -27,7 +38,7 @@ class UserController extends Controller
                 'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
                 'unique:users,email',
             ],
-            'senha' => 'required|string|min:6',
+            'senha' => 'required|string|min:6'
         ], [
             'nome.required' => 'É necessário informar um nome',
             'email.regex' => 'O campo email deve ter um formato válido, incluindo um domínio com TLD (exemplo: .com, .org).',
@@ -99,7 +110,7 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Usuário deletado com sucesso']);
     }
-        public function login(Request $request) {
+    public function login(Request $request) {
             $credentials = $request->only('email', 'senha');
 
             try {
@@ -119,14 +130,20 @@ class UserController extends Controller
     }
     
 
-    public function logout(Request $request) {
-        try {
-            JWTAuth::getToken(); 
-            if (!JWTAuth::invalidate())  
-                throw new \Exception('Erro. Tente novamente.', -404);
-            return response(['status' => true, 'msg' => 'Deslogado com sucesso'], 200);
-        } catch (\Throwable|\Exception $e) {
-            return ResponseService::exception('users.logout', null, $e); 
+    public function logout(Request $request)
+{
+    try {
+        $token = JWTAuth::getToken();
+        if (!$token) {
+            throw new \Exception('Token não encontrado.', 400);
         }
+        JWTAuth::invalidate($token);
+
+        return response(['status' => true, 'msg' => 'Deslogado com sucesso'], 200);
+    } catch (\Throwable|\Exception $e) {
+        return response()->json(['status' => false, 'msg' => $e->getMessage()], 400);
     }
+}
+
+    
 }

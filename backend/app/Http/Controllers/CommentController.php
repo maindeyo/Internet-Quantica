@@ -7,7 +7,6 @@ use App\Models\Comment; // Certifique-se de ter o modelo Comment configurado
 
 class CommentController extends Controller
 {
-    // Exibe todos os comentários
     public function index()
     {
         $comments = Comment::all(); 

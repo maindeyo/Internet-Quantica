@@ -16,7 +16,7 @@ servers:
 paths:
   /signup:
     post:
-      summary: Cria um novo usuário
+      summary: "Cria um novo usuário"
       requestBody:
         required: true
         content:
@@ -26,20 +26,23 @@ paths:
               properties:
                 nome:
                   type: string
-                  description: Nome do usuário
+                  description: "Nome do usuário"
+                  maxLength: 255
                 email:
                   type: string
-                  description: Email do usuário
+                  description: "Email do usuário"
+                  pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
                 senha:
                   type: string
-                  description: Senha do usuário
+                  description: "Senha do usuário"
+                  minLength: 6
               required:
                 - nome
                 - email
                 - senha
       responses:
-        201:
-          description: Usuário criado
+        '201':
+          description: "Usuário criado"
           content:
             application/json:
               schema:
@@ -47,9 +50,9 @@ paths:
                 properties:
                   location:
                     type: string
-                    description: URI do novo usuário
-        400:
-          description: Requisição inválida
+                    description: "URI do novo usuário"
+        '400':
+          description: "Requisição inválida"
           content:
             application/json:
               schema:
@@ -57,7 +60,8 @@ paths:
                 properties:
                   message:
                     type: string
-                    description: Mensagem de erro
+                    description: "Mensagem de erro"
+
 
   /login:
     post:
@@ -108,33 +112,30 @@ paths:
                   message:
                     type: string
                     description: Mensagem de erro
-
+                    
   /logout:
     post:
-      summary: Realiza o logout de um usuário
+      summary: Desloga o usuário em questão
       security:
         - bearer: []
       responses:
         200:
-          description: Logout bem-sucedido
+          description: Usuário deslogado com sucesso
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  message:
+                  status:
+                    type: boolean
+                    description: Indica se o logout foi bem-sucedido
+                  msg:
                     type: string
-                    description: Mensagem de sucesso, indicando que o logout foi realizado
+                    description: Mensagem de confirmação
         401:
-          description: Usuário não autenticado ou token inválido
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    description: Mensagem de erro indicando que o usuário não está autenticado ou o token expirou
+          description: Token inválido ou não fornecido
+        500:
+          description: Erro interno no servidor
 
   /usuarios:
     get:
@@ -158,6 +159,8 @@ paths:
           type: integer
     get:
       summary: Acessa um usuário específico
+      security:
+        - bearer: []
       responses:
         200:
           description: Detalhes do usuário
@@ -180,10 +183,45 @@ paths:
                     format: date-time
         404:
           description: Usuário não encontrado
+  
+  /usuarios/{id}/nome:
+    get:
+      summary: Retorna o nome de um usuário baseado no ID.
+      description: Acessa o nome do usuário baseado no id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: O ID do usuário que se deseja buscar.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário encontrado, retornando o nome.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "João Silva"
+        '404':
+          description: Usuário não encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Usuário não encontrado"
 
   /comments:
     get:
       summary: Lista todos os comentários
+      security:
+        - bearer: []
       responses:
         200:
           description: Lista de comentários
@@ -195,6 +233,8 @@ paths:
                   $ref: '#/components/schemas/Comment'
     post:
       summary: Cria um novo comentário
+      security:
+        - bearer: []
       requestBody:
         required: true
         content:
@@ -242,6 +282,8 @@ paths:
           type: integer
     get:
       summary: Acessa um comentário específico
+      security:
+        - bearer: []
       responses:
         200:
           description: Detalhes do comentário
@@ -260,6 +302,8 @@ paths:
           description: Comentário não encontrado
     put:
       summary: Atualiza um comentário específico
+      security:
+        - bearer: []
       requestBody:
         required: true
         content:
@@ -287,6 +331,8 @@ paths:
           description: Requisição inválida
     delete:
       summary: Exclui um comentário específico
+      security:
+        - bearer: []
       responses:
         204:
           description: Comentário excluído com sucesso
@@ -294,6 +340,11 @@ paths:
           description: Comentário não encontrado
 
 components:
+  securitySchemes:
+    bearer: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     User:
       type: object
@@ -326,9 +377,3 @@ components:
         updated_at:
           type: string
           format: date-time
-
-  securitySchemes:
-    bearer: 
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
