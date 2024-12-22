@@ -3,31 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Comment; // Certifique-se de ter o modelo Comment configurado
+use App\Models\Comment;
+use App\Models\User; 
 
 class CommentController extends Controller
 {
-    public function index()
-    {
-        $comments = Comment::all(); 
-        return response()->json($comments); 
+    public function index() {
+        $comments = Comment::all(['content', 'usu_nome', 'created_at']);
+        return response()->json($comments);
     }
 
-
     public function store(Request $request) {
-        $request->validate([
+        $dados = $request->validate([
             'content' => 'required|string|max:255',
             'usu_id' => 'required|integer|exists:users,id',
         ]);
     
-        $comment = new Comment();
-        $comment->content = $request->input('content');
-        $comment->usu_id = $request->input('usu_id'); 
-        $comment->save();
+        $user = User::findOrFail($dados['usu_id']); 
     
-        return response()->json(['message' => 'Comentário criado com sucesso!', 'comment' => $comment]);
+        $comment = Comment::create([
+            'content' => $dados['content'],
+            'usu_id' => $user->id,
+            'usu_nome' => $user->nome, 
+        ]);
+    
+        return response()->json([
+            'message' => 'Comentário criado com sucesso!',
+            'comment' => $comment,
+        ]);
     }
     
+
 
     public function update(Request $request, $id)
     {

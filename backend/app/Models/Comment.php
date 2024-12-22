@@ -13,6 +13,7 @@ class Comment extends Model
     protected $fillable = [
         'content',
         'usu_id',
+        'usu_nome',
     ];
 
     public function usuario(): BelongsTo

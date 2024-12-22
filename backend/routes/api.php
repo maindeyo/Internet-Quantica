@@ -24,8 +24,6 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::group(['middleware'=> 'jwt.verify'], function () {
     Route::prefix('/usuarios')->get('/{id}', [UserController::class, 'show'])->name('usuarios.perfil');
-    // Route::get('/id', [UserController::class, 'id'])->name('id');
-
 
     Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
@@ -42,5 +40,4 @@ Route::prefix('/usuarios')->name('usuarios.')->group(function () {
     Route::get('', [UserController::class, 'index'])->name('lista');
     Route::put('/{id}', [UserController::class, 'update'])->name('atualizar');
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('deletar');
-    Route::get('/{id}/nome', [UserController::class, 'getUserName']);
 });

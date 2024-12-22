@@ -183,39 +183,6 @@ paths:
                     format: date-time
         404:
           description: Usuário não encontrado
-  
-  /usuarios/{id}/nome:
-    get:
-      summary: Retorna o nome de um usuário baseado no ID.
-      description: Acessa o nome do usuário baseado no id
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: O ID do usuário que se deseja buscar.
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Usuário encontrado, retornando o nome.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    example: "João Silva"
-        '404':
-          description: Usuário não encontrado.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: "Usuário não encontrado"
 
   /comments:
     get:
@@ -248,9 +215,14 @@ paths:
                 usu_id:
                   type: integer
                   description: ID do usuário que está criando o comentário
+                usu_nome:
+                  type: string
+                  description: nome do usuário que criou o comentário
+
               required:
                 - content
                 - usu_id
+                - usu_nome
       responses:
         201:
           description: Comentário criado com sucesso

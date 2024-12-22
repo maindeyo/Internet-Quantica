@@ -13,7 +13,7 @@ import api from "../services/api";
 export default function Navigation() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showCadastroModal, setShowCadastroModal] = useState(false);
-  const token = localStorage.getItem("token"); //navigation
+  const token = localStorage.getItem("token");
        
   // localStorage.removeItem("token");
 
