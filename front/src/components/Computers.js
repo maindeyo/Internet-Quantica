@@ -7,7 +7,7 @@ const Computers = () => {
   const cards = data.computers;
 
   return (
-    <section className="bg-white py-5">
+    <section id="quantum-computing" className="bg-white py-5">
       <Container>
         <h2 className="text-center mb-5 text-primary fw-bold">
           Computadores Quânticos
