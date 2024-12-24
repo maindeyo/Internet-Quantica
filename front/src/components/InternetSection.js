@@ -6,7 +6,7 @@ const InternetSection = () => {
   const InternetData = data.internet;
 
   return (
-    <section style={{ backgroundColor: '#ffffff', padding: '60px 0' }}>
+    <section id="quantum-internet-crypto" style={{ backgroundColor: '#ffffff', padding: '60px 0' }} >
       <Container>
         <h2 className="text-center mb-5" style={{ color: '#083654', fontWeight: 'bold' }}>
           Internet Quântica e Criptografia 

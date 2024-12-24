@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/signup', [UserController::class, 'store'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::get('/comments', [CommentController::class, 'index'])->name('lista');
 
 Route::group(['middleware'=> 'jwt.verify'], function () {
     Route::prefix('/usuarios')->get('/{id}', [UserController::class, 'show'])->name('usuarios.perfil');
@@ -29,7 +30,6 @@ Route::group(['middleware'=> 'jwt.verify'], function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
     Route::prefix('comments')->name('comments.')->group(function () {
-        Route::get('', [CommentController::class, 'index'])->name('lista');
         Route::post('', [CommentController::class, 'store'])->name('criar');
         Route::get('/{id}', [CommentController::class, 'show'])->name('mostrar');
         Route::put('/{id}', [CommentController::class, 'update'])->name('atualizar');

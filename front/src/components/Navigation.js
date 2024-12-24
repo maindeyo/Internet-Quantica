@@ -158,7 +158,7 @@ export default function Navigation() {
               <Nav.Link href="#quantum-computing" className="px-3">
                 Computadores Quânticos
               </Nav.Link>
-              <Nav.Link href="#pricing" className="px-3">
+              <Nav.Link href="#quantum-internet-crypto" className="px-3">
                 Internet Quântica e Criptografia Quântica
               </Nav.Link>
             </Nav>
