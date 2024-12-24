@@ -8,8 +8,8 @@ import PhysicSection from './components/PhysicSection';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Computers from './components/Computers';
 import InternetSection from './components/InternetSection';
-import InfoSession from './components/InfoSession';
 import Comentarios from './components/Comments';
+import Footer from './components/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +18,9 @@ root.render(
     <CustomCarousel />
     <PhysicSection />
     <Computers />
-    <Comentarios />
+    <InternetSection />
+    <Comentarios /> 
+    <Footer />
   </React.StrictMode>
 );
 reportWebVitals();

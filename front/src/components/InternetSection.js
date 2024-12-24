@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import data from '../data/data.json'; // Ajuste conforme o caminho correto
+import data from '../data/data.json';
 
 const InternetSection = () => {
   const InternetData = data.internet;

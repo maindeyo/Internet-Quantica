@@ -24,6 +24,7 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::group(['middleware'=> 'jwt.verify'], function () {
     Route::prefix('/usuarios')->get('/{id}', [UserController::class, 'show'])->name('usuarios.perfil');
+    Route::get('/id', [UserController::class, 'id'])->name('id');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
@@ -32,7 +33,9 @@ Route::group(['middleware'=> 'jwt.verify'], function () {
         Route::post('', [CommentController::class, 'store'])->name('criar');
         Route::get('/{id}', [CommentController::class, 'show'])->name('mostrar');
         Route::put('/{id}', [CommentController::class, 'update'])->name('atualizar');
-        Route::delete('/{id}', [CommentController::class, 'destroy'])->name('deletar');
+        // Route::delete('/{id}', [CommentController::class, 'destroy'])->name('deletar');
+        Route::middleware('auth:api')->delete('/{id}', [CommentController::class, 'destroy'])->name('deletar');
+
     });
 });
 

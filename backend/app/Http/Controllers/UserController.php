@@ -19,14 +19,9 @@ class UserController extends Controller
     
     }
 
-    public function getUserName($id) {
-    $user = User::find($id);
-
-    if (!$user) {
-        return response()->json(['message' => 'Usuário não encontrado'], 404);
-    }
-
-    return response()->json(['name' => $user->nome], 200);
+    public function id() {
+        $usuarios = User::find(auth()->id());
+        return $usuarios->id;
     }
 
     public function store(Request $request) {
@@ -93,23 +88,6 @@ class UserController extends Controller
         return response()->json(['user' => $user]);
     }
 
-    public function destroy($id)
-    {
-        $user = User::find($id);
-        
-        if (!$user) {
-            return response()->json(['message' => 'Usuário não encontrado'], 404);
-        }
-        
-        $comments = Comment::where('usu_id', $id)->get();
-        foreach ($comments as $comment) {
-            $comment->delete();
-        }
-
-        $user->delete();
-
-        return response()->json(['message' => 'Usuário deletado com sucesso']);
-    }
     public function login(Request $request) {
             $credentials = $request->only('email', 'senha');
 
@@ -130,8 +108,7 @@ class UserController extends Controller
     }
     
 
-    public function logout(Request $request)
-{
+    public function logout(Request $request) {
     try {
         $token = JWTAuth::getToken();
         if (!$token) {

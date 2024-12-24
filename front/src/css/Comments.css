@@ -1,4 +1,4 @@
-.list-comments {
+/* .list-comments {
     height: 255px;
     overflow-y: auto; 
     border: 1px solid #ddd;
@@ -13,6 +13,41 @@
     height: 400px; 
   }
   
+  textarea.form-control {
+    max-height: 400px; 
+    overflow-y: auto;  
+    resize: none;      
+  }
+  
+  
+  */
+
+  .list-comments {
+    height: 255px;
+    overflow-y: auto; 
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px; 
+  }
+  .button {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 12px;
+    background-color: #083654;
+    color: white;
+    transition-duration: 0.4s;
+  }
+  
+  .button:hover{
+    border-color: #083654;
+  }
   textarea.form-control {
     max-height: 400px; 
     overflow-y: auto;  

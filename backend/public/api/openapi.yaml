@@ -136,6 +136,24 @@ paths:
           description: Token inválido ou não fornecido
         500:
           description: Erro interno no servidor
+  /id:
+    get:
+      summary: Retorna o ID do usuário logado
+      security:
+        - bearer: []
+      responses:
+        200:
+          description: Usuário encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    description: o ID do Usuario logado
+        404:
+          description: Usuario não encontrado
 
   /usuarios:
     get:
@@ -244,7 +262,6 @@ paths:
                   message:
                     type: string
                     description: Mensagem de erro detalhada
-
   /comments/{id}:
     parameters:
       - name: id
@@ -300,16 +317,51 @@ paths:
         404:
           description: Comentário não encontrado
         400:
-          description: Requisição inválida
+          description: Requisição inválida 
     delete:
       summary: Exclui um comentário específico
+      description: Exclui um comentário existente
       security:
         - bearer: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do comentário a ser excluído
+          schema:
+            type: integer
+            example: 1
       responses:
-        204:
+        200:
           description: Comentário excluído com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Comentário excluído com sucesso.
+        403:
+          description: Usuário não autorizado a excluir o comentário
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Você não tem permissão para excluir este comentário.
         404:
           description: Comentário não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Nenhum comentário encontrado com este ID.
 
 components:
   securitySchemes:

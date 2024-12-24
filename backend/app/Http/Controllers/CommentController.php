@@ -9,7 +9,7 @@ use App\Models\User;
 class CommentController extends Controller
 {
     public function index() {
-        $comments = Comment::all(['content', 'usu_nome', 'created_at']);
+        $comments = Comment::all(['content', 'usu_nome', 'created_at', 'id', 'usu_id']);
         return response()->json($comments);
     }
 
@@ -53,16 +53,23 @@ class CommentController extends Controller
         return response()->json(['message' => 'Comentário atualizado com sucesso!', 'comment' => $comment]);
     }
 
-    public function destroy($id)
-    {
-        $comment = Comment::find($id);
-
-        if (!$comment) {
-            return response()->json(['message' => 'Comentário não encontrado!'], 404);
+    public function destroy($id) {
+        // Encontrar o comentário pelo ID
+        $comment = Comment::findOrFail($id);
+    
+        // Verificar se o id do usuário autenticado é o mesmo que o id do usuário do comentário
+        if ($comment->usu_id !== auth()->id()) {
+            // Se os IDs não coincidem, retorna um erro 403 (Forbidden)
+            return response()->json(['error' => 'Você não tem permissão para excluir este comentário.'], 403);
         }
-
+    
+        // Excluir o comentário
         $comment->delete();
-
-        return response()->json(['message' => 'Comentário excluído com sucesso!']);
+    
+        // Retornar uma resposta de sucesso
+        return response()->json(['message' => 'Comentário excluído com sucesso.']);
     }
+    
+    
+
 }
