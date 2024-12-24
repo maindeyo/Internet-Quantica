@@ -127,6 +127,15 @@ const Comentarios = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
+    api.get('/comments')
+      .then((response) => {
+        setComentarios(response.data);
+      })
+      .catch((error) => {
+        console.error('Erro ao carregar os comentários:', error);
+        alert('Erro ao carregar os comentários: ' + error.message);
+      });
+      
     if (token) {
       api.get('/id', {
         headers: { Authorization: `Bearer ${token}` },
@@ -138,19 +147,9 @@ const Comentarios = () => {
         .catch((error) => {
           console.error('Erro ao carregar o userId:', error);
         });
-  
-      api.get('/comments', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((response) => {
-          setComentarios(response.data);
-        })
-        .catch((error) => {
-          console.error('Erro ao carregar os comentários:', error);
-          alert('Erro ao carregar os comentários: ' + error.message);
-        });
     }
-  }, [token]);
+  }, [token]);  
+  
   
 
   const handleComment = (e) => {
