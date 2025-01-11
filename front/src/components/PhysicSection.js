@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import data from '../data/data.json';
-import '../css/PhysicSection.css'; //fisica
+import '../css/PhysicSection.css'; 
 
 const PhysicSection = () => {
   const PhysiClassicData = data.physiclassic;
@@ -12,13 +13,12 @@ const PhysicSection = () => {
   const showQuantumText = () => setShowClassic(false);
 
   return (
-    <section id="physic-section" className="py-5">
+    <section id="physic-section">
       <Container>
         <Row className="mb-4">
           <Col
             md={6}
-            className="d-flex flex-column justify-content-center align-items-center"
-            style={{ padding: "20px" }}
+            className="d-flex flex-column justify-content-center align-items-center physic-content"
           >
             <h2 className="physic-title">
               {showClassic ? PhysiClassicData[0].title : PhysiQuantumData[0].title}
@@ -31,12 +31,11 @@ const PhysicSection = () => {
           <Col
             md={6}
             className="d-flex flex-column justify-content-start align-items-center"
-            style={{ padding: "20px" }}
           >
             <h3 className="cientists-title">
               Principais Cientistas
             </h3>
-            <div className="d-flex justify-content-around" style={{ width: "100%", flexWrap: 'wrap' }}>
+            <div className="cientists-container">
               {(showClassic ? PhysiClassicData[0].scientists : PhysiQuantumData[0].scientists).map((scientist, index) => (
                 <div key={index} className="cientist-card">
                   <img
@@ -55,10 +54,16 @@ const PhysicSection = () => {
 
         <Row className="mt-4">
           <Col className="button-container">
-            <Button variant="primary" onClick={showClassicText} style={{ marginRight: "10px" }}>
+            <Button
+              className={`physic-btn ${showClassic ? 'active' : ''}`}
+              onClick={showClassicText}
+            >
               Física Clássica
             </Button>
-            <Button variant="secondary" onClick={showQuantumText}>
+            <Button
+              className={`physic-btn ${!showClassic ? 'active' : ''}`}
+              onClick={showQuantumText}
+            >
               Física Quântica
             </Button>
           </Col>
@@ -69,3 +74,4 @@ const PhysicSection = () => {
 };
 
 export default PhysicSection;
+

@@ -7,11 +7,11 @@ const CustomCadastro = ({ show, onHide }) => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [errors, setErrors] = useState({}); // Estado para armazenar os erros
+  const [errors, setErrors] = useState({}); 
 
   const handleCadastro = async (e) => {
     e.preventDefault();
-    setErrors({}); // Limpa os erros anteriores
+    setErrors({});
 
     try {
       const response = await api.post("/signup", { nome, email, senha });
@@ -21,7 +21,7 @@ const CustomCadastro = ({ show, onHide }) => {
     } catch (error) {
       console.error("Erro no cadastro:", error);
       if (error.response && error.response.data.errors) {
-        setErrors(error.response.data.errors); // Captura os erros do back-end
+        setErrors(error.response.data.errors); 
       } else {
         alert("Erro ao realizar o cadastro. Tente novamente.");
       }
@@ -43,7 +43,7 @@ const CustomCadastro = ({ show, onHide }) => {
               placeholder="Digite seu nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-              isInvalid={!!errors.nome} // Adiciona estilo de erro
+              isInvalid={!!errors.nome}
             />
             <Form.Control.Feedback type="invalid">
               {errors.nome?.[0]}

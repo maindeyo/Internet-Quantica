@@ -33,7 +33,6 @@ Route::group(['middleware'=> 'jwt.verify'], function () {
         Route::post('', [CommentController::class, 'store'])->name('criar');
         Route::get('/{id}', [CommentController::class, 'show'])->name('mostrar');
         Route::put('/{id}', [CommentController::class, 'update'])->name('atualizar');
-        // Route::delete('/{id}', [CommentController::class, 'destroy'])->name('deletar');
         Route::middleware('auth:api')->delete('/{id}', [CommentController::class, 'destroy'])->name('deletar');
 
     });

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import LoginModal from "./Login"; // Importando o modal de login
-import CustomCadastro from "./Cadastro"; // Importando o modal de cadastro
+import LoginModal from "./Login"; 
+import CustomCadastro from "./Cadastro";
 import { Modal, Button } from "react-bootstrap";
 
 const UnloggedComment = ({ showModal, handleClose }) => {
   const [showLogin, setShowLogin] = useState(false);  
-  const [showCadastro, setShowCadastro] = useState(false); // Estado para o modal de cadastro
+  const [showCadastro, setShowCadastro] = useState(false); 
 
   const handleShowLogin = () => {
     setShowLogin(true);

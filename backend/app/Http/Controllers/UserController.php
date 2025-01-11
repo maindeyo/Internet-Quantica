@@ -1,4 +1,4 @@
-<?php //controller de usuario
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -63,29 +63,6 @@ class UserController extends Controller
         }
 
         return response()->json($user);
-    }
- 
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-
-        if (!$user) {
-            return response()->json(['message' => 'Usuário não encontrado'], 404);
-        }
-
-        $validatedData = $request->validate([
-            'nome' => 'sometimes|string|max:255',
-            'email' => 'sometimes|email|unique:users,email,' . $user->id,
-            'senha' => 'sometimes|string|min:8',
-        ]);
-
-        if (isset($validatedData['senha'])) {
-            $validatedData['senha'] = Hash::make($validatedData['password']);
-        }
-
-        $user->update($validatedData);
-
-        return response()->json(['user' => $user]);
     }
 
     public function login(Request $request) {

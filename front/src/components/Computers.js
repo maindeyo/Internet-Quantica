@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import data from '../data/data.json';
-import "../css/Computers.css"; // CSS personalizado
+import "../css/Computers.css";
 
 const Computers = () => {
   const cards = data.computers;
@@ -9,7 +9,7 @@ const Computers = () => {
   return (
     <section id="quantum-computing" className="bg-white py-5">
       <Container>
-        <h2 className="text-center mb-5 text-primary fw-bold">
+        <h2 className="text-center mb-5 fw-bold">
           Computadores Quânticos
         </h2>
         <Row className="CardsComp g-4">
@@ -38,3 +38,4 @@ const Computers = () => {
 };
 
 export default Computers;
+
