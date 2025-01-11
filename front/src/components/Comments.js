@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
-import { jwtDecode } from 'jwt-decode';
 import UnloggedComment from './UnloggedComment'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Comments.css';
