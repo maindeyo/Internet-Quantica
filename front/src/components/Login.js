@@ -21,8 +21,8 @@ const LoginModal = ({ show, onHide }) => {
 
     try {
       const response = await api.post("/login", { email, senha });
-      console.log("Login bem-sucedido:", response.data.token);
       localStorage.setItem("token", response.data.token);
+      window.location.reload();
 
       onHide();
     } catch (error) {

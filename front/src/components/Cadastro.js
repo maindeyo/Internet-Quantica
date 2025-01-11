@@ -16,8 +16,8 @@ const CustomCadastro = ({ show, onHide }) => {
     try {
       const response = await api.post("/signup", { nome, email, senha });
       localStorage.setItem("token", response.data.token);
-      console.log("Cadastro bem-sucedido:", response.data);
       onHide();
+      window.location.reload();
     } catch (error) {
       console.error("Erro no cadastro:", error);
       if (error.response && error.response.data.errors) {

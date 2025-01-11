@@ -14,6 +14,8 @@ export default function Navigation() {
   const [showCadastroModal, setShowCadastroModal] = useState(false);
   const token = localStorage.getItem("token");
 
+  // localStorage.removeItem("token");
+
   function handleLogout() {
     api
       .post(
@@ -25,6 +27,7 @@ export default function Navigation() {
       )
       .then(() => {
         localStorage.removeItem("token");
+        window.location.reload();
       })
       .catch((error) => {
         alert("Erro ao tentar deslogar.");
