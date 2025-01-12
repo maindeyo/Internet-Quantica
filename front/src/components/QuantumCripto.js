@@ -12,8 +12,12 @@ const QuantumCripto = () => {
     const inputPassword = e.target.value;
     setPassword(inputPassword);
 
-    const hash = crypto.SHA256(inputPassword).toString();
-    setEncryptedPassword(hash);
+    if (inputPassword.trim() === "") {
+      setEncryptedPassword("");
+    } else {
+      const hash = crypto.SHA256(inputPassword).toString();
+      setEncryptedPassword(hash);
+    }
   };
 
   const quantumCriptoData = data.quantumCripto[0];
@@ -21,7 +25,7 @@ const QuantumCripto = () => {
   return (
     <section id="quantum-cripto" className="bg-light py-5">
       <Container>
-      <h2 className="section-title text-center mb-5">
+        <h2 className="section-title text-center mb-5">
           Criptografia Quântica
         </h2>
         <Row>
@@ -60,7 +64,8 @@ const QuantumCripto = () => {
                     />
                   </Form.Group>
                 </Form>
-                <h4 className="observation mt-3 text-center">Observação: Este site utiliza criptografia clássica (SHA-256) para fins de demonstração.
+                <h4 className="observation mt-3 text-center">
+                  Observação: Este site utiliza criptografia clássica (SHA-256) para fins de demonstração.
                 </h4>
               </Card.Body>
             </Card>

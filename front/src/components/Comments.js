@@ -104,12 +104,6 @@ const Comentarios = () => {
                     >
                       Excluir
                     </a>
-                    <span> </span>
-                    <a
-                    className="text-primary"
-                  >
-                    Editar
-                  </a>
                   </div>
                   )}
                 </div>
