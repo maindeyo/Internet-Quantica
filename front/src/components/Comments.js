@@ -134,7 +134,7 @@ const Comentarios = () => {
                   rows="8"  
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">Enviar</button>
+              <button type="submit" className="btn custom-button-color w-100">Enviar</button>
             </form>
           </div>
         </div>

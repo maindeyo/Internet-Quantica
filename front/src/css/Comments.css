@@ -23,13 +23,29 @@
   }
   
   .button:hover{
-    border-color: #083654;
+    border-color: #fff;
   }
+
   textarea.form-control {
     max-height: 400px; 
     overflow-y: auto;  
     resize: none;      
   }
+
+  .custom-button-color {
+    background-color: #083654;
+    color: white; 
+    border: 2px solid #083654; 
+    transition: all 0.3s ease; 
+    border-radius: 12px; 
+  }
+  
+  .custom-button-color:hover {
+    background-color: transparent; 
+    color: #000; 
+    border-color: #083654; 
+  }
+  
   
   
  
