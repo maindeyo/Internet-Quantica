@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import UnloggedComment from './UnloggedComment'; 
@@ -20,27 +22,25 @@ const Comentarios = () => {
         console.error('Erro ao carregar os comentários:', error);
         alert('Erro ao carregar os comentários: ' + error.message);
       });
-      
+
     if (token) {
       api.get('/id', {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => {
           setUserId(response.data);
-          console.log(response.data);
         })
         .catch((error) => {
           console.error('Erro ao carregar o userId:', error);
         });
     }
-  }, [token]);  
-  
+  }, [token]);
 
   const handleComment = (e) => {
     e.preventDefault();
 
     if (!token) {
-      setShowModal(true); 
+      setShowModal(true);
       return;
     }
 
@@ -58,7 +58,6 @@ const Comentarios = () => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        alert('Comentário criado com sucesso!');
         setComentarios([...comentarios, response.data.comment]);
         setComentario('');
       })
@@ -69,11 +68,13 @@ const Comentarios = () => {
   };
 
   const handleDelete = (id) => {
+    const confirmDelete = window.confirm("Tem certeza que deseja excluir este comentário?");
+    if (!confirmDelete) return;
+
     api.delete(`/comments/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => {
-        alert('Comentário excluído com sucesso!');
+      .then(() => {
         setComentarios(comentarios.filter(com => com.id !== id));
       })
       .catch((error) => {
@@ -82,7 +83,7 @@ const Comentarios = () => {
       });
   };
 
-  const handleCloseModal = () => setShowModal(false); 
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <div className="container mt-5">
@@ -94,17 +95,18 @@ const Comentarios = () => {
                 <div key={index} className="list-group-item mb-3">
                   <p><strong>{com.usu_nome}</strong>: {com.content}</p>
                   {com.usu_id === userId && (
-                    <div> 
-                    <a
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleDelete(com.id);
-                      }}
-                      className="text-danger"
-                    >
-                      Excluir
-                    </a>
-                  </div>
+                    <div>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleDelete(com.id);
+                        }}
+                        className="text-danger"
+                      >
+                        Excluir
+                      </a>
+                    </div>
                   )}
                 </div>
               ))
@@ -125,7 +127,7 @@ const Comentarios = () => {
                   placeholder="Digite seu comentário..."
                   value={comentario}
                   onChange={(e) => setComentario(e.target.value)}
-                  rows="8"  
+                  rows="8"
                 />
               </div>
               <button type="submit" className="btn custom-button-color w-100">Enviar</button>
@@ -140,3 +142,4 @@ const Comentarios = () => {
 };
 
 export default Comentarios;
+

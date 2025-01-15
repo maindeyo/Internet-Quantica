@@ -37,6 +37,7 @@ class UserController extends Controller
         ], [
             'nome.required' => 'É necessário informar um nome',
             'email.regex' => 'O campo email deve ter um formato válido, incluindo um domínio com TLD (exemplo: .com, .org).',
+            'email.required' => 'É necessário informar um email.',
             'email.unique' => 'Este email já está em uso.',
             'senha.min' => 'Sua senha é muito curto, ela deve conter no mínimo 6 caracteres.',
             'senha.required' => 'O campo senha é obrigatório.', 
